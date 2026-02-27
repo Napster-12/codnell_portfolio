@@ -1,278 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Codnell Chabalala | Computer Systems Engineer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Codnell Chabalala | Computer Systems Engineer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+<style>
 
-        body {
-            background: #f4f6f9;
-            color: #333;
-            line-height: 1.6;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
 
-        header {
-            background: #0f172a;
-            color: white;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+body{
+background:#f4f6f9;
+color:#333;
+line-height:1.6;
+}
 
-        header h1 {
-            font-size: 22px;
-        }
+/* ================= NAVBAR ================= */
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+header{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(15,23,42,0.9);
+backdrop-filter:blur(12px);
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+}
 
-        nav a:hover {
-            color: #38bdf8;
-        }
+header h1{
+color:white;
+font-size:20px;
+}
 
-        /* HERO SECTION */
+nav{
+display:flex;
+gap:25px;
+}
 
-        .hero {
-            background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
-            color: white;
-            padding: 100px 8%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-            position: relative;
-            overflow: hidden;
-        }
+nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
+position:relative;
+}
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%);
-            top: -100px;
-            right: -100px;
-            z-index: 0;
-        }
+nav a::after{
+content:'';
+position:absolute;
+width:0%;
+height:2px;
+background:#38bdf8;
+left:0;
+bottom:-5px;
+transition:0.3s;
+}
 
-        .hero-text {
-            max-width: 650px;
-            z-index: 1;
-        }
+nav a:hover::after{
+width:100%;
+}
 
-        .hero h2 {
-            font-size: 46px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
+.menu-toggle{
+display:none;
+font-size:24px;
+color:white;
+cursor:pointer;
+}
 
-        .hero p {
-            font-size: 17px;
-            margin-bottom: 30px;
-            color: #cbd5e1;
-        }
+/* ================= HERO ================= */
 
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background: #38bdf8;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: 0.3s ease;
-        }
+.hero{
+margin-top:90px;
+background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
+color:white;
+padding:100px 8%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+position:relative;
+overflow:hidden;
+flex-wrap:wrap;
+}
 
-        .btn:hover {
-            background: #0ea5e9;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(56,189,248,0.4);
-        }
+.hero-text{
+max-width:650px;
+}
 
-        .hero-image {
-            position: relative;
-            z-index: 1;
-        }
+.hero h2{
+font-size:42px;
+margin-bottom:20px;
+}
 
-        .profile-img {
-            width: 320px;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 20px;
-            border: 4px solid #38bdf8;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            animation: float 4s ease-in-out infinite;
-            transition: 0.4s ease;
-        }
+.hero p{
+color:#cbd5e1;
+margin-bottom:30px;
+}
 
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
+.btn{
+display:inline-block;
+padding:14px 30px;
+background:#38bdf8;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+transition:0.3s;
+}
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
+.btn:hover{
+background:#0ea5e9;
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(56,189,248,0.4);
+}
 
-        section {
-            padding: 70px 8%;
-        }
+/* ================= SLIDESHOW ================= */
 
-        h3 {
-            margin-bottom: 30px;
-            font-size: 30px;
-            color: #0f172a;
-        }
+.slideshow{
+position:relative;
+width:320px;
+height:380px;
+overflow:hidden;
+border-radius:20px;
+border:4px solid #38bdf8;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-        }
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1s ease-in-out;
+}
 
-        /* SKILLS */
+.slide.active{
+opacity:1;
+}
 
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
+.slide-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.5);
+color:white;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+font-size:18px;
+border-radius:50%;
+}
 
-        .card h4 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 18px;
-        }
+.prev{ left:10px; }
+.next{ right:10px; }
 
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
+/* ================= SECTIONS ================= */
 
-        .skill-tags span {
-            background: #e2e8f0;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.3s ease;
-        }
+section{
+padding:70px 8%;
+}
 
-        .skill-tags span:hover {
-            background: #38bdf8;
-            color: white;
-            transform: translateY(-3px);
-        }
+h3{
+margin-bottom:30px;
+font-size:30px;
+color:#0f172a;
+}
 
-        /* DOCUMENTS */
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 6px 20px rgba(0,0,0,0.06);
+}
 
-        .documents {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
+/* Keep all your existing skill styles */
 
-        .download-btn {
-            display: block;
-            text-align: center;
-            padding: 15px;
-            background: #0f172a;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: 0.3s ease;
-        }
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
 
-        .download-btn:hover {
-            background: #38bdf8;
-            transform: translateY(-3px);
-        }
+.card h4{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:18px;
+}
 
-        footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+.skill-tags{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:15px;
+}
 
-        /* RESPONSIVE */
+.skill-tags span{
+background:#e2e8f0;
+padding:8px 14px;
+border-radius:20px;
+font-size:14px;
+display:flex;
+align-items:center;
+gap:6px;
+transition:0.3s;
+}
 
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 80px 8%;
-            }
+.skill-tags span:hover{
+background:#38bdf8;
+color:white;
+transform:translateY(-3px);
+}
 
-            .hero h2 {
-                font-size: 32px;
-            }
+.documents{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
 
-            .profile-img {
-                width: 260px;
-                height: 320px;
-                margin-top: 40px;
-            }
-        }
-    </style>
+.download-btn{
+display:block;
+text-align:center;
+padding:15px;
+background:#0f172a;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-weight:600;
+transition:0.3s;
+}
+
+.download-btn:hover{
+background:#38bdf8;
+transform:translateY(-3px);
+}
+
+footer{
+background:#0f172a;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+nav{
+position:absolute;
+top:70px;
+right:0;
+background:#0f172a;
+flex-direction:column;
+width:220px;
+padding:20px;
+display:none;
+}
+
+nav.active{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.slideshow{
+margin-top:40px;
+width:260px;
+height:320px;
+}
+
+.hero h2{
+font-size:30px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Codnell Chabalala</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-        <a href="#documents">Documents</a>
-    </nav>
+<h1>Codnell Chabalala</h1>
+
+<i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
+
+<nav id="nav-links">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
+<a href="#education">Education</a>
+<a href="#contact">Contact</a>
+<a href="#documents">Documents</a>
+</nav>
 </header>
 
 <section class="hero">
-    <div class="hero-text">
-        <h2>Full Stack Developer | Data Scientist | IT Support Specialist</h2>
-        <p>
-            Graduate in Computer Systems Engineering with experience as a Junior Data Scientist.
-            Skilled in cloud computing, networking, software development, data analysis, and hands-on IT support.
-            Eager to contribute to technical teams while expanding practical industry skills.
-        </p>
-        <a href="#contact" class="btn">Contact Me</a>
-    </div>
+<div class="hero-text">
+<h2>Full Stack Developer | Data Scientist | IT Support Specialist</h2>
+<p>
+Graduate in Computer Systems Engineering with experience as a Junior Data Scientist.
+Skilled in cloud computing, networking, software development, and data analysis.
+</p>
+<a href="#contact" class="btn">Contact Me</a>
+</div>
 
-    <div class="hero-image">
-        <img src="images/CODNELL.jpeg" alt="Codnell Chabalala" class="profile-img">
-    </div>
+<div class="slideshow">
+<img src="images/CODNELL.jpeg" class="slide active" alt="Photo 1">
+<img src="images/CODNELL2.jpeg" class="slide" alt="Photo 2">
+
+<button class="slide-btn prev" onclick="prevSlide()">
+<i class="fas fa-chevron-left"></i>
+</button>
+
+<button class="slide-btn next" onclick="nextSlide()">
+<i class="fas fa-chevron-right"></i>
+</button>
+</div>
 </section>
 
 <section id="about">
@@ -457,6 +521,34 @@
 <footer>
     <p>© 2026 Codnell Chabalala | Computer Systems Engineer</p>
 </footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("nav-links").classList.toggle("active");
+}
+
+let slides=document.querySelectorAll(".slide");
+let index=0;
+
+function showSlide(i){
+slides.forEach(slide=>slide.classList.remove("active"));
+slides[i].classList.add("active");
+}
+
+function nextSlide(){
+index=(index+1)%slides.length;
+showSlide(index);
+}
+
+function prevSlide(){
+index=(index-1+slides.length)%slides.length;
+showSlide(index);
+}
+
+setInterval(nextSlide,4000);
+
+</script>
 
 </body>
 </html>
