@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Codnell Chabalala | Computer Systems Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            color: white;
+            padding: 80px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #38bdf8;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        section {
+            padding: 60px 8%;
+        }
+
+        h3 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #0f172a;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skills ul {
+            list-style: none;
+        }
+
+        .skills li {
+            padding: 5px 0;
+        }
+
+        .documents {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .download-btn {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background: #0f172a;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-img {
+                margin-top: 30px;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Codnell Chabalala</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a href="#documents">Documents</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h2>Computer Systems Engineer | Cloud & Data Enthusiast</h2>
+        <p>
+            Graduate in Computer Systems Engineering with experience as a Junior Data Scientist.
+            Skilled in cloud computing, networking, software development, data analysis, and hands-on IT support.
+            Experienced in troubleshooting, asset handling, and technical assistance within academic and workplace environments.
+            Eager to contribute to technical teams while expanding practical industry skills.
+        </p>
+        <a href="#contact" class="btn">Contact Me</a>
+    </div>
+
+    <img src="profile.jpg" alt="Codnell Chabalala" class="profile-img">
+</section>
+
+<section id="about">
+    <h3>About Me</h3>
+    <div class="card">
+        <p>
+            I am a Computer Systems Engineering graduate with practical experience
+            in cloud computing, networking, software development, and data analytics.
+            I have worked in both academic and workplace environments providing
+            troubleshooting, system testing, technical support, and asset handling.
+        </p>
+        <p>
+            With exposure to data science, machine learning, and IT infrastructure,
+            I aim to contribute meaningfully to technical teams while continuously
+            developing advanced industry skills in cloud and systems engineering.
+        </p>
+    </div>
+</section>
+
+<section id="skills">
+    <h3>Skills</h3>
+    <div class="skills">
+
+        <div class="card">
+            <h4>Programming</h4>
+            <ul>
+                <li>Python, C++, Java, HTML, PHP, C</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Frameworks</h4>
+            <ul>
+                <li>Laravel, Flask, Django</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Databases</h4>
+            <ul>
+                <li>SQL, MySQL</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Cloud Computing</h4>
+            <ul>
+                <li>Microsoft Azure, AWS, Afrohost</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Data & Analytics</h4>
+            <ul>
+                <li>Power BI, Machine Learning</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Networking & Systems</h4>
+            <ul>
+                <li>Network configuration, LAN/Wi-Fi, Windows/Linux OS</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Embedded Systems</h4>
+            <ul>
+                <li>ESP32, Arduino</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h4>Technical & Soft Skills</h4>
+            <ul>
+                <li>Troubleshooting, System Testing, Debugging, Documentation</li>
+                <li>Communication, Teamwork, Problem-solving, Reliability</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section id="experience">
+    <h3>Experience</h3>
+    <div class="card">
+        <h4>IT Support Intern – Moepi Publishing</h4>
+        <p><strong>Aug 2025 – Jan 2026</strong></p>
+        <ul>
+            <li>Provided first-line hardware and software support</li>
+            <li>Installed and configured desktop systems and printers</li>
+            <li>Performed routine maintenance and upgrades</li>
+            <li>Assisted with network troubleshooting</li>
+            <li>Provided remote technical assistance</li>
+            <li>Documented and resolved technical issues</li>
+        </ul>
+    </div>
+</section>
+
+<section id="education">
+    <h3>Education</h3>
+    <div class="card">
+        <h4>Diploma in Electrical Engineering – Computer Systems</h4>
+        <p>2021 – 2025</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h3>Contact</h3>
+    <div class="card">
+        <p><strong>Location:</strong> Vanderbijlpark, South Africa</p>
+        <p><strong>Phone:</strong> 065 636 9815</p>
+        <p><strong>Email:</strong> codnellsmall@gmail.com</p>
+        <p><strong>LinkedIn:</strong> linkedin.com/in/codnell-chabalala-166b48213</p>
+    </div>
+</section>
+
+<section id="documents">
+    <h3>Documents</h3>
+    <div class="documents">
+
+        <a href="cv.pdf" download class="download-btn">📄 Download CV</a>
+        <a href="academic-record.pdf" download class="download-btn">🎓 Download Academic Record</a>
+        <a href="qualification.pdf" download class="download-btn">🏆 Download Qualification</a>
+        <a href="matric-certificate.pdf" download class="download-btn">📑 Download Matric Certificate</a>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Codnell Chabalala | Computer Systems Engineer</p>
+</footer>
+
+</body>
+</html>
