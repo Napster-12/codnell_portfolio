@@ -530,43 +530,7 @@ if __name__ == '__main__':
 </pre>
 
 <div class="project-links">
-<a href="#" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
-<a href="#" class="live-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-</div>
-</div>
-
-<!-- ================= PROJECT 2 ================= -->
-<div class="project-card">
-<h3>Leave Management System</h3>
-
-<p class="project-description">
-A company leave management platform allowing employees to apply for leave
-and administrators to approve or reject requests with analytics dashboards.
-</p>
-
-<img src="images/leave-system-screenshot.jpg" alt="Leave Management Screenshot" class="project-image">
-
-<div class="tech-stack">
-<strong>Technologies:</strong><br>
-<span>Python</span>
-<span>Flask</span>
-<span>SQLite</span>
-<span>Bootstrap</span>
-<span>JavaScript</span>
-</div>
-
-<pre>
-# Leave Approval Logic
-@app.route('/approve/<int:id>')
-def approve_leave(id):
-    leave = Leave.query.get(id)
-    leave.status = "Approved"
-    db.session.commit()
-    return redirect(url_for('admin_dashboard'))
-</pre>
-
-<div class="project-links">
-<a href="#" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
+<a href="https://github.com/Napster-12/check-in-UPDATES-V02" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
 <a href="#" class="live-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
 </div>
 </div>
@@ -600,7 +564,7 @@ travel packages, and booking inquiries.
 </pre>
 
 <div class="project-links">
-<a href="" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
+<a href="https://github.com/Napster-12/kings-trips" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
 <a href="https://www.kingstrip.co.za" target="_blank" class="live-btn">
     <i class="fas fa-external-link-alt"></i> Live Demo
 </a>
