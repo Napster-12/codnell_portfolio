@@ -573,7 +573,13 @@ A responsive website built for a travel agency showcasing luxury trips,
 travel packages, and booking inquiries.
 </p>
 
-<img src="images/kings-trip-screenshot.jpg" alt="Kings Trip Screenshot" class="project-image">
+<!-- Screenshot Gallery -->
+<div class="screenshot-grid">
+    <img src="images/kings1.png" alt="WIL Screenshot 1">
+    <img src="images/kings2.png" alt="WIL Screenshot 2">
+    <img src="images/kings3.png" alt="WIL Screenshot 3">
+    <img src="images/kings4.png" alt="WIL Screenshot 4">
+</div>
 
 <div class="tech-stack">
 <strong>Technologies:</strong><br>
@@ -587,6 +593,160 @@ travel packages, and booking inquiries.
 
 
 index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KingSTrips | Luxury Trips, Lifetime Memories</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  color: #1e2e3e;
+  background: #ffffff;
+}
+
+/* NAVBAR */
+.navbar {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  padding: 1.2rem 0;
+}
+
+.navbar-brand img {
+  height: 85px;
+  width: auto;
+}
+
+.nav-link {
+  font-weight: 500;
+  margin-left: 1.5rem;
+  color: #1e3e55 !important;
+}
+
+/* VIDEO HERO */
+.hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(10,30,45,0.75), rgba(10,30,45,0.55));
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 750px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+.btn-main {
+  background: #1e5d8e;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  color: white;
+  margin-top: 20px;
+}
+
+.section {
+  padding: 90px 0;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+  color: #1d3d5a;
+  text-align: center;
+}
+
+.service-card,
+.trip-card {
+  background: #f6fafd;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+  height: 100%;
+}
+
+.destination-card {
+  border: none;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px -8px rgba(0, 40, 60, 0.08);
+}
+
+.destination-card img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.contact-section {
+  background: linear-gradient(125deg, #1b5279, #123b57);
+  color: white;
+  border-radius: 48px;
+  padding: 4rem 2rem;
+}
+
+.footer {
+  background: #eef3f8;
+  padding: 24px 0;
+  text-align: center;
+  color: #2b4c6b;
+}
+
+@media(max-width:768px){
+  .navbar-brand img {
+    height: 65px;
+  }
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+}
+</style>
+</head>
+<body>
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg sticky-top">
@@ -779,6 +939,14 @@ index.html
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
