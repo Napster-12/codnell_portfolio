@@ -117,6 +117,24 @@ pre{
     margin-top:20px;
     color:#38bdf8;
 }
+/* Screenshot Grid */
+.screenshot-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:15px;
+    margin:20px 0;
+}
+
+.screenshot-grid img{
+    width:100%;
+    border-radius:10px;
+    transition:0.3s ease;
+    cursor:pointer;
+}
+
+.screenshot-grid img:hover{
+    transform:scale(1.05);
+}
 
 /* ================= BUTTONS ================= */
 .project-links{
@@ -185,7 +203,18 @@ A full-stack monitoring system used by WIL students, mentors, coordinators and M
 Students check in 3 times daily, submit timesheets & logbooks, and mentors monitor dashboards with analytics.
 </p>
 
-<img src="images/wil-system-screenshot.jpg" alt="WIL System Screenshot" class="project-image">
+<!-- Screenshot Gallery -->
+<div class="screenshot-grid">
+    <img src="images/photo1.png" alt="WIL Screenshot 1">
+    <img src="images/photo10.png" alt="WIL Screenshot 2">
+    <img src="images/photo3.png" alt="WIL Screenshot 3">
+    <img src="images/photo4.png" alt="WIL Screenshot 4">
+    <img src="images/photo5.png" alt="WIL Screenshot 5">
+    <img src="images/photo6.png" alt="WIL Screenshot 6">
+    <img src="images/photo7.png" alt="WIL Screenshot 7">
+    <img src="images/photo8.png" alt="WIL Screenshot 8">
+    <img src="images/photo9.png" alt="WIL Screenshot 9">
+</div>
 
 <div class="tech-stack">
 <strong>Technologies:</strong><br>
