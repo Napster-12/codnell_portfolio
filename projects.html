@@ -584,12 +584,209 @@ travel packages, and booking inquiries.
 </div>
 
 <pre>
-<!-- Sample B -->
-<form action="/book" method="POST">
-  <input type="text" name="name" placeholder="Full Name">
-  <input type="email" name="email" placeholder="Email">
-  <button type="submit">Book Now</button>
-</form>
+
+
+index.html
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="images/logo.jpg" alt="KingSTrips Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="Trips.html">Trips</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- VIDEO HERO -->
+<section class="hero">
+<video autoplay muted loop playsinline>
+  <source src="images/hero.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+
+<div class="container hero-content">
+  <h1>Luxury Trips. Lifetime Memories.</h1>
+  <p>Professional group travel, school trips, and customised travel experiences across South Africa and neighbouring countries.</p>
+  <a href="Trips.html" class="btn btn-main">View Upcoming Trips</a>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section text-center">
+<div class="container">
+  <h2 class="section-title">About KingSTrips</h2>
+  <p class="lead">We specialise in safe, affordable and professionally managed school trips, group tours, corporate retreats and church travel experiences.</p>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section bg-light">
+<div class="container">
+<h2 class="section-title">Our Services</h2>
+<div class="row g-4">
+<div class="col-md-4">
+<div class="service-card text-center">
+<i class="bi bi-backpack fs-1 text-primary"></i>
+<h5 class="fw-bold mt-3">School Trips</h5>
+<p>Educational tours, grade camps and heritage visits.</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="service-card text-center">
+<i class="bi bi-people fs-1 text-primary"></i>
+<h5 class="fw-bold mt-3">Group & Leisure Tours</h5>
+<p>Durban, Cape Town, Maputo and customised travel packages.</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="service-card text-center">
+<i class="bi bi-briefcase fs-1 text-primary"></i>
+<h5 class="fw-bold mt-3">Corporate & Church Trips</h5>
+<p>Team-building retreats, conferences and organised outings.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations" class="section">
+<div class="container">
+<h2 class="section-title">Popular Destinations</h2>
+<div class="row g-4">
+<div class="col-md-4">
+<div class="destination-card">
+<img src="images/durban.jpg" class="card-img-top" alt="Durban">
+<div class="card-body text-center"><h5>Durban</h5></div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="destination-card">
+<img src="images/capetown.jpg" class="card-img-top" alt="Cape Town">
+<div class="card-body text-center"><h5>Cape Town</h5></div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="destination-card">
+<img src="images/school.jpg" class="card-img-top" alt="School Trip">
+<div class="card-body text-center"><h5>School Trip</h5></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Upcoming Trips -->
+<section id="upcoming" class="section bg-light">
+<div class="container">
+<h2 class="text-center section-title">Upcoming Trips</h2>
+<div class="row g-4">
+
+<div class="col-lg-6">
+<div class="card trip-card shadow-sm p-4 h-100">
+<div class="d-flex justify-content-between align-items-center">
+<h4 class="fw-bold">Namibia International Trip</h4>
+<span class="badge bg-danger">Exclusive to 8 People</span>
+</div>
+<p class="text-muted mt-2">📅 24 September 2026</p>
+<h5 class="text-primary">R13 530 Per Person</h5>
+<h6 class="text-secondary">R24 000 For 2 People</h6>
+<hr>
+<ul class="small">
+<li>Transport to OR Tambo</li>
+<li>Return Flights</li>
+<li>Transport to activities</li>
+<li>3 Nights Accommodation</li>
+<li>Daily Breakfast</li>
+<li>Boat Cruise</li>
+<li>Printed T-Shirt</li>
+<li>Windhoek City Tour</li>
+<li>Desert Scenic Drive</li>
+<li>Local Craft Market</li>
+<li>Daan Viljoen Nature Reserve</li>
+</ul>
+<a href="contact.html" class="btn btn-main w-100 mt-3">Reserve Your Spot</a>
+</div>
+</div>
+
+<div class="col-lg-6">
+<div class="card trip-card shadow-sm p-4 h-100">
+<h4 class="fw-bold">Durban Experience</h4>
+<p class="text-muted mt-2">📅 1 – 4 October 2026</p>
+<hr>
+<ul class="small">
+<li>Transport</li>
+<li>3 Nights Accommodation</li>
+<li>Daily Breakfast</li>
+<li>Boat Cruise</li>
+<li>Printed KingSTrips T-Shirt</li>
+<li>Durban Tour</li>
+<li>Durban Night Life</li>
+<li>South Beach Experience</li>
+<li>Eyadini</li>
+</ul>
+<a href="contact.html" class="btn btn-main w-100 mt-3">Book Durban Trip</a>
+</div>
+</div>
+
+</div>
+</div>
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-section text-center">
+      <h2>Contact Us</h2>
+      <p>Call: <a href="tel:0647625369">064 762 5369</a> | <a href="tel:0672987440">067 298 7440</a></p>
+      <p>Email: <a href="mailto:mathebulathulani377@gmail.com">mathebulathulani377@gmail.com</a></p>
+
+      <!-- Social Media Icons -->
+      <div class="social-icons mt-3">
+        <a href="https://wa.me/27647625369" target="_blank" style="margin: 0 10px; font-size: 24px;">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.tiktok.com/@kingstrips" target="_blank" style="margin: 0 10px; font-size: 24px;">
+          <i class="fab fa-tiktok"></i>
+       <a href="https://www.facebook.com/share/1DiEDpWb55/" target="_blank" title="Facebook" style="margin: 0 10px; font-size: 24px;"><i class="fab fa-facebook"></i></a>
+        <a href="mailto:mathebulathulani377@gmail.com" style="margin: 0 10px; font-size: 24px;">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<p>© 2026 KingSTrips (Pty) Ltd | All Rights Reserved</p>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
 </pre>
 
 <div class="project-links">
