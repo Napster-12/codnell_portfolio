@@ -260,16 +260,294 @@ Students check in 3 times daily, submit timesheets & logbooks, and mentors monit
 </div>
 
 <pre>
-@app.route('/student/dashboard')
+# -------------------- Routes --------------------
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+
+
+# -------------------- Registration --------------------
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # ------------------- Common Fields -------------------
+        fullname = request.form.get('fullname', '').strip()
+        email = request.form.get('email', '').strip().lower()
+        password = request.form.get('password', '')
+        confirm = request.form.get('confirm', '')
+
+        if not fullname or not email or not password or not confirm:
+            flash("Please fill in all required fields.", "danger")
+            return redirect(url_for('register'))
+
+        if password != confirm:
+            flash("Passwords do not match.", "danger")
+            return redirect(url_for('register'))
+
+        # Only allow certain domains
+        allowed_domains = ('@tekete.co.za', '@vut.ac.za', '@micseta.org.za','@edu.vut.ac.za','@tut.ac.za','@tut.ac.za')
+        if not email.endswith(allowed_domains):
+            flash('Only organization emails allowed.', 'danger')
+            return redirect(url_for('register'))
+
+        # Check if user already exists
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            flash('Account with this email already exists.', 'danger')
+            return redirect(url_for('register'))
+
+        # ------------------- Student Registration -------------------
+        student_number = request.form.get('student_number', '').strip()
+        if student_number:  
+            institution_type = request.form.get('institution_type', '').strip()
+            institution_name = request.form.get('institution_name', '').strip()
+            department = request.form.get('department', '').strip()
+            mentor_id = request.form.get('mentor_id', None)
+
+            # Validate all required student fields
+            if not institution_type or not institution_name or not department:
+                flash("Please fill in all student fields.", "danger")
+                return redirect(url_for('register'))
+
+            user = User(
+                fullname=fullname,
+                email=email,
+                role="Student",
+                organization=institution_name,     
+                student_number=student_number,
+                department=department,
+                institution_type=institution_type,
+                mentor_id=int(mentor_id) if mentor_id else None,
+                is_admin=False
+            )
+
+        # ------------------- Admin Registration -------------------
+        else:
+            user_type_form = request.form.get('user_type', '').strip()  # Admin type
+            organization = request.form.get('organization', '').strip()
+
+            if not user_type_form or not organization:
+                flash("Please fill in all admin fields.", "danger")
+                return redirect(url_for('register'))
+
+            user = User(
+                fullname=fullname,
+                email=email,
+                role=user_type_form,
+                organization=organization,
+                is_admin=user_type_form in ['Mentor', 'WIL Co-ordinator', 'Administrator']
+            )
+
+        # ------------------- Set Password & Save -------------------
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+
+        flash("Account created successfully! You can now log in.", "success")
+        return redirect(url_for('login'))
+
+    # ------------------- GET Request -------------------
+    # Provide list of mentors for student dropdown
+    mentors = User.query.filter(User.role.in_(['Mentor', 'MICSETA Mentor']), User.is_admin == True).order_by(User.fullname.asc()).all()
+    return render_template('register.html', mentors=mentors)
+
+
+
+
+
+# -------------------- Login with 2FA --------------------
+import pyotp
+import qrcode
+import io
+import base64
+
+from flask import session
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        # Redirect already logged-in users based on role
+        if current_user.role == "Administrator":
+            return redirect(url_for('admin_dashboard'))
+        elif current_user.role == "Mentor":
+            return redirect(url_for('admin_dashboard'))
+        elif current_user.role == "WIL Co-ordinator":
+            return redirect(url_for('wil_coordinator_dashboard'))
+        elif current_user.role == "MICSETA Mentor":
+            return redirect(url_for('mictseta_dashboard'))
+        else:
+            return redirect(url_for('dashboard'))
+
+    # Step 1: Password Verification
+    if request.method == 'POST' and 'otp' not in request.form:
+        email = request.form.get('email', '').strip().lower()
+        password = request.form.get('password', '')
+
+        allowed_domains = ('@tekete.co.za', '@vut.ac.za', '@micseta.org.za', '@edu.vut.ac.za', '@tut.ac.za')
+        if not email.endswith(allowed_domains):
+            flash('Only organization emails are allowed.', 'danger')
+            return redirect(url_for('login'))
+
+        user = User.query.filter_by(email=email).first()
+        if not user or not user.check_password(password):
+            flash('Invalid credentials.', 'danger')
+            return redirect(url_for('login'))
+
+        # Generate 2FA secret if not set
+        if not user.two_factor_secret:
+            user.two_factor_secret = pyotp.random_base32()
+            db.session.commit()
+
+        # Generate TOTP QR Code
+        totp_uri = user.get_totp_uri()
+        qr = qrcode.QRCode(box_size=6, border=2)
+        qr.add_data(totp_uri)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")
+        buf = io.BytesIO()
+        img.save(buf, format='PNG')
+        qr_b64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+
+        # Store user ID temporarily in session for OTP verification
+        session['pre_2fa_user_id'] = user.id
+        return render_template('verify_otp.html', email=email, qr_b64=qr_b64)
+
+    # Step 2: OTP Verification
+    if request.method == 'POST' and 'otp' in request.form:
+        otp = request.form.get('otp', '').strip()
+        user_id = session.get('pre_2fa_user_id')
+
+        if not user_id:
+            flash('Session expired. Please log in again.', 'danger')
+            return redirect(url_for('login'))
+
+        user = User.query.get(user_id)
+        if not user or not user.two_factor_secret:
+            flash('User not found or 2FA not set.', 'danger')
+            return redirect(url_for('login'))
+
+        totp = pyotp.TOTP(user.two_factor_secret)
+        if totp.verify(otp, valid_window=1):
+            session.pop('pre_2fa_user_id', None)
+            login_user(user)
+            flash('Logged in successfully ✅', 'success')
+
+            # Role-based dashboard redirect
+            if user.role == "Administrator":
+                return redirect(url_for('admin_dashboard'))
+            elif user.role == "Mentor":
+                return redirect(url_for('admin_dashboard'))
+            elif user.role == "WIL Co-ordinator":
+                return redirect(url_for('wil_coordinator_dashboard'))
+            elif user.role == "MICSETA Mentor":
+                return redirect(url_for('mictseta_dashboard'))
+            else:
+                return redirect(url_for('dashboard'))
+        else:
+            flash('Invalid or expired verification code.', 'danger')
+            return redirect(url_for('login'))
+
+    # GET request
+    return render_template('login.html')
+
+
+@app.route('/verify-otp', methods=['GET', 'POST'])
+def verify_otp():
+    """
+    Handles 2FA verification.
+    Regenerates QR on refresh so it never disappears.
+    """
+
+    user_id = session.get('pre_2fa_user_id')
+    if not user_id:
+        flash("Session expired. Please log in again.", "danger")
+        return redirect(url_for('login'))
+
+    user = User.query.get(user_id)
+    if not user:
+        flash("User not found.", "danger")
+        return redirect(url_for('login'))
+
+    # Ensure user has a secret
+    if not user.two_factor_secret:
+        user.two_factor_secret = pyotp.random_base32()
+        db.session.commit()
+
+    # Always generate QR from user's existing secret
+    qr_b64 = None
+    totp = pyotp.TOTP(user.two_factor_secret)
+    uri = totp.provisioning_uri(name=user.email, issuer_name="Moepi Publishing")
+
+    qr = qrcode.QRCode(box_size=6, border=2)
+    qr.add_data(uri)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    buffer = io.BytesIO()
+    img.save(buffer, format="PNG")
+    qr_b64 = base64.b64encode(buffer.getvalue()).decode()
+
+    # Handle POST (OTP submission)
+    if request.method == 'POST':
+        otp_input = request.form.get('otp', '').strip()
+        if not otp_input:
+            flash("Please enter the 6-digit code.", "danger")
+            return redirect(url_for('verify_otp'))
+
+        if totp.verify(otp_input, valid_window=1):
+            login_user(user)
+            session.pop('pre_2fa_user_id', None)
+            flash("Two-factor authentication successful!", "success")
+
+            # Role-based redirect
+            if user.role == "Administrator":
+                return redirect(url_for('admin_dashboard'))
+            elif user.role == "Mentor":
+                return redirect(url_for('mentor_dashboard'))
+            elif user.role == "WIL Co-ordinator":
+                return redirect(url_for('wil_coordinator_dashboard'))
+            elif user.role == "MICSETA Mentor":
+                return redirect(url_for('mictseta_dashboard'))
+            else:
+                return redirect(url_for('dashboard'))
+
+        flash("Invalid OTP. Please try again.", "danger")
+        return redirect(url_for('verify_otp'))
+
+    # Render page with QR ALWAYS included
+    return render_template("verify_otp.html", qr_b64=qr_b64)
+
+
+
+
+
+
+# -------------------- Logout --------------------
+@app.route('/logout')
 @login_required
-def student_dashboard():
-    checkins = CheckIn.query.filter_by(
-        user_id=current_user.id
-    ).all()
-    return render_template(
-        'dashboard.html',
-        checkins=checkins
-    )
+def logout():
+    logout_user()
+    flash('Logged out.', 'info')
+    return redirect(url_for('home'))
+
+
+# -------------------- Forgot / Reset Password --------------------
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form.get('email').strip().lower()
+        user = User.query.filter_by(email=email).first()
+        if user:
+            token = s.dumps(user.email, salt='password-reset-salt')
+            reset_link = url_for('reset_password', token=token, _external=True)
+            msg = Message('Password Reset Request', recipients=[user.email])
+            msg.body = f"Hi {user.fullname},\n\nClick the link to reset your password:\n{reset_link}"
+            mail.send(msg)
+        flash('If this email exists, a reset link has been sent.', 'info')
+        return redirect(url_for('login'))
+    return render_template('forgot_password.html')
+
 </pre>
 
 <div class="project-links">
@@ -304,11 +582,7 @@ travel packages, and booking inquiries.
 </div>
 
 <pre>
-<form action="/book" method="POST">
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
-  <button type="submit">Book Now</button>
-</form>
+
 </pre>
 
 <div class="project-links">
