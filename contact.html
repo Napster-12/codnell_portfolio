@@ -2,206 +2,96 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Codnell Chabalala | Contact</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codnell Chabalala | Contact</title>
+<meta name="description" content="Get in touch with Codnell Chabalala.">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-/* ================= GLOBAL ================= */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-    scroll-behavior:smooth;
-}
-
-html, body{
-    min-height:100%;
-    display:flex;
-    flex-direction:column;
-}
-
-body{
-    background:#f4f6f9;
-    color:#333;
-    line-height:1.6;
-    flex:1;
-}
-
-/* ================= NAVBAR ================= */
-header{
-    position:fixed;
-    top:0;
-    width:100%;
-    background:rgba(15,23,42,0.95);
-    backdrop-filter:blur(12px);
-    padding:18px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:1000;
-}
-
-header h1{
-    color:white;
-    font-size:20px;
-}
-
-nav{
-    display:flex;
-    gap:25px;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-    position:relative;
-}
-
-nav a::after{
-    content:'';
-    position:absolute;
-    width:0%;
-    height:2px;
-    background:#38bdf8;
-    left:0;
-    bottom:-5px;
-    transition:0.3s;
-}
-
-nav a:hover::after{
-    width:100%;
-}
-
-.menu-toggle{
-    display:none;
-    font-size:24px;
-    color:white;
-    cursor:pointer;
-}
-
-/* ================= CONTACT ================= */
-section{
-    padding:120px 8% 70px 8%;
-    flex:1;
-}
-
-h3{
-    margin-bottom:30px;
-    font-size:30px;
-    color:#0f172a;
-}
-
-.contact-card{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.06);
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.contact-card p{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:16px;
-}
-
-.contact-card a{
-    color:#0f172a;
-    text-decoration:none;
-    font-weight:500;
-}
-
-.contact-card a:hover{
-    color:#38bdf8;
-}
-
-/* ================= FOOTER ================= */
-footer{
-    background:#0f172a;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:auto;
-}
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:900px){
-    nav{
-        position:fixed;
-        top:70px;
-        right:0;
-        background:#0f172a;
-        flex-direction:column;
-        width:220px;
-        padding:20px;
-        display:none;
-        height:calc(100% - 70px);
-        overflow-y:auto;
-        transition:0.3s;
-    }
-    nav.active{
-        display:flex;
-    }
-    .menu-toggle{
-        display:block;
-    }
-}
-
-@media(max-width:600px){
-    section{
-        padding:140px 5% 50px 5%;
-    }
-    h3{
-        font-size:26px;
-    }
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header>
-<h1>Codnell Chabalala</h1>
-<i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
+<aside class="sidebar">
+    <div class="sidebar-top">
+        <a href="index.html" class="brand">
+            <img src="images/Codnell.jpg" alt="Codnell Chabalala" class="avatar">
+            <span><strong>Codnell Chabalala</strong><small>Systems Analyst · Icebolethu Group</small></span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links"><i class="fas fa-bars"></i></button>
+    </div>
+    <nav id="nav-links">
+        <a href="index.html"><i class="fas fa-house"></i> Home</a>
+        <a href="skills.html"><i class="fas fa-layer-group"></i> Skills</a>
+        <a href="index.html#experience"><i class="fas fa-briefcase"></i> Experience</a>
+        <a href="projects.html"><i class="fas fa-code"></i> Projects</a>
+        <a href="documents.html"><i class="fas fa-file-lines"></i> Documents</a>
+        <a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+    <div class="sidebar-socials">
+        <a href="https://github.com/Napster-12" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/codnell-chabalala-166b48213" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://wa.me/27656369815" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:codnellsmall@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+</aside>
 
-<nav id="nav-links">
-<a href="index.html">Home</a>
-<a href="documents.html">Documents</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
+<main>
 
-<section id="contact">
-<h3>Contact Me</h3>
-
-<div class="contact-card">
-    <p><i class="fas fa-map-marker-alt"></i> Johannesburg, South Africa</p>
-    <p><i class="fas fa-phone"></i> <a href="tel:+27656369815">065 636 9815</a></p>
-    <p><i class="fab fa-whatsapp" style="color:#25D366;"></i> <a href="https://wa.me/27656369815" target="_blank">Chat on WhatsApp</a></p>
-    <p><i class="fas fa-envelope" style="color:#D44638;"></i> <a href="mailto:codnellsmall@gmail.com">codnellsmall@gmail.com</a></p>
-    <p><i class="fab fa-linkedin" style="color:#0077B5;"></i> <a href="https://linkedin.com/in/codnell-chabalala-166b48213" target="_blank">linkedin.com/in/codnell-chabalala-166b48213</a></p>
+<div class="page-hero">
+    <span class="eyebrow">Get in touch</span>
+    <h1>Contact Me</h1>
+    <p>Happy to connect about systems, software, data and IT. The fastest way to reach me is WhatsApp or email.</p>
 </div>
 
+<section id="contact">
+    <div class="container contact-grid">
+
+        <div class="card contact-item">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+            <span><span class="label">Location</span><span class="value">Glenwood, Durban, South Africa</span></span>
+        </div>
+
+        <a href="tel:+27656369815" class="card contact-item">
+            <span class="icon"><i class="fas fa-phone"></i></span>
+            <span><span class="label">Phone</span><span class="value">065 636 9815</span></span>
+        </a>
+
+        <a href="https://wa.me/27656369815" target="_blank" rel="noopener" class="card contact-item">
+            <span class="icon whatsapp"><i class="fab fa-whatsapp"></i></span>
+            <span><span class="label">WhatsApp</span><span class="value">Chat on WhatsApp</span></span>
+        </a>
+
+        <a href="mailto:codnellsmall@gmail.com" class="card contact-item">
+            <span class="icon email"><i class="fas fa-envelope"></i></span>
+            <span><span class="label">Email</span><span class="value">codnellsmall@gmail.com</span></span>
+        </a>
+
+        <a href="https://linkedin.com/in/codnell-chabalala-166b48213" target="_blank" rel="noopener" class="card contact-item">
+            <span class="icon linkedin"><i class="fab fa-linkedin-in"></i></span>
+            <span><span class="label">LinkedIn</span><span class="value">codnell-chabalala</span></span>
+        </a>
+
+        <a href="https://github.com/Napster-12" target="_blank" rel="noopener" class="card contact-item">
+            <span class="icon github"><i class="fab fa-github"></i></span>
+            <span><span class="label">GitHub</span><span class="value">Napster-12</span></span>
+        </a>
+
+    </div>
 </section>
 
+</main>
+
 <footer>
-<p>© 2026 Codnell Chabalala | Computer Systems Engineer</p>
+    <p>© <span class="year">2026</span> Codnell Chabalala | Computer Systems Engineer</p>
+    <div class="footer-links">
+        <a href="https://github.com/Napster-12" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/codnell-chabalala-166b48213" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:codnellsmall@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
 </footer>
 
-<script>
-function toggleMenu(){
-    document.getElementById("nav-links").classList.toggle("active");
-}
-</script>
-
+<script src="js/main.js"></script>
 </body>
-
 </html>
